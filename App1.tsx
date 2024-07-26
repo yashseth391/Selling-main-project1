@@ -3,11 +3,12 @@ import React from 'react';
 import ListingScreen from './App/screens/ListingScreen';
 import AppText from './App/components/AppText';
 import ViewImageScreen from './App/screens/ViewImageScreen';
+import MessageScreen from './App/screens/MessageScreen';
 
 const App1 = () => {
   return (
     <View style={styles.main}>
-      <ViewImageScreen />
+      <MessageScreen />
     </View>
   );
 };
