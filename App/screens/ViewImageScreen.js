@@ -1,11 +1,18 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import colors from '../config/colors'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 const ViewImageScreen = () => {
     return (
         <View style={styles.container}>
-            <View style={styles.closeIcon}></View>
-            <View style={styles.deleteIcon}></View>
+            <View style={styles.closeIcon}>
+                <Icon name="close" size={38} color="white" />
+
+            </View>
+            <View style={styles.deleteIcon}>
+                <Icon name="delete" size={38} color="white" />
+            </View>
 
             <Image
                 resizeMode='contain'
@@ -28,17 +35,15 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     closeIcon: {
-        width: 50,
-        height: 50,
-        backgroundColor: colors.primary,
+
+
         position: 'absolute',
         left: 30,
         top: 40
     },
     deleteIcon: {
-        width: 50,
-        height: 50,
-        backgroundColor: colors.secondary,
+
+
         position: 'absolute',
         top: 40,
         right: 30
