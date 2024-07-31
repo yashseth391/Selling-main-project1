@@ -1,11 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import ListingScreen from './App/screens/ListingScreen';
-import AppText from './App/components/AppText';
 import ViewImageScreen from './App/screens/ViewImageScreen';
+import ListItemDeleteAction from './App/components/ListItemDeleteAction';
 import MessageScreen from './App/screens/MessageScreen';
+import ListItem from './App/components/ListItem';
+import Screen from './App/screens/Screen';
+import WelcomeScreen from './App/screens/WelcomeScreen';
+import ListingScreen from './App/screens/ListingScreen';
 
-const App1 = () => {
+const App = () => {
   return (
     <View style={styles.main}>
       <MessageScreen />
@@ -13,7 +16,7 @@ const App1 = () => {
   );
 };
 
-export default App1;
+export default App;
 
 const styles = StyleSheet.create({
   main: {

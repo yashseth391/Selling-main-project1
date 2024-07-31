@@ -2,17 +2,24 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
+import ListItemSeparator from './ListItemSeparator'
 
 const ListItem = ({ image, title, subtitle }) => {
     return (
         <View style={styles.container}>
-            <Image source={image}
+
+            <Image
+                source={image}
                 style={styles.image}
             />
-            <View style={styles.detail}>
-                <AppText todisplay={title} style={styles.tittle} />
-                <AppText todisplay={subtitle} style={styles.subtittle} />
+            <View style={styles.info}  >
+                <AppText todisplay={title} style={styles.titletext} />
+                <AppText todisplay={subtitle} style={styles.subtitletext} />
             </View>
+
+
+
+
         </View>
     )
 }
@@ -21,20 +28,22 @@ export default ListItem
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: "row"
+        flexDirection: 'row',
+        margin: 8,
     },
     image: {
-        width: 90,
-        height: 90,
-        borderRadius: 45,
-        marginRight: 10,
+        width: 70,
+        height: 70,
+        borderRadius: 35
 
     },
-    subtittle: {
-        color: colors.medium,
+    titletext: {
+        fontWeight: '500'
     },
-
-    tittle: {
-        fontWeight: "500"
+    subtitletext: {
+        color: colors.medium
+    },
+    info: {
+        marginLeft: 8,
     }
 })
