@@ -1,26 +1,35 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
 import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
-import ListItemSeparator from './ListItemSeparator'
+import ListItemDeleteAction from './ListItemDeleteAction'
 
-const ListItem = ({ image, title, subtitle }) => {
+const ListItem = ({ image, title, subtitle, onpressitem }) => {
     return (
-        <View style={styles.container}>
 
-            <Image
-                source={image}
-                style={styles.image}
-            />
-            <View style={styles.info}  >
-                <AppText todisplay={title} style={styles.titletext} />
-                <AppText todisplay={subtitle} style={styles.subtitletext} />
+        <TouchableHighlight
+            onPress={onpressitem}
+            underlayColor={"E1E1E1"}
+        >
+            <View style={styles.container}>
+                <Image
+                    source={image}
+                    style={styles.image}
+                />
+                <View style={styles.info}  >
+                    <AppText todisplay={title} style={styles.titletext} />
+                    <AppText todisplay={subtitle} style={styles.subtitletext} />
+                </View>
+                <ListItemDeleteAction onpressaction={console.log("hello")} />
             </View>
 
+        </TouchableHighlight>
 
 
 
-        </View>
+
+
+
     )
 }
 
@@ -29,7 +38,7 @@ export default ListItem
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        margin: 8,
+        margin: 4,
     },
     image: {
         width: 70,
@@ -45,5 +54,9 @@ const styles = StyleSheet.create({
     },
     info: {
         marginLeft: 8,
+    }
+    ,
+    delete: {
+
     }
 })

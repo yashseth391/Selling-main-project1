@@ -1,7 +1,9 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import ListItem from '../components/ListItem'
 import ListItemSeparator from '../components/ListItemSeparator'
+import ListItemDeleteAction from '../components/ListItemDeleteAction'
+import Screen from './Screen'
 
 const MessageScreen = () => {
     const messages = [
@@ -26,24 +28,36 @@ const MessageScreen = () => {
     ]
 
     return (
-        <View>
+        <View >
             <FlatList
                 data={messages}
-                key={messages => messages.id.toString}
+                key={item => item.id.toString}
                 renderItem={({ item }) =>
                     <ListItem
                         image={item.image}
                         title={item.title}
                         subtitle={item.description}
+                        onpressitem={() => console.log("yo")}
+                        renderRightActions={() => (
+                            <ListItemDeleteAction
+                                onPress={() => console.log("pressed")}
+                            />
+                        )}
                     />
+
                 }
                 ItemSeparatorComponent={ListItemSeparator}
 
             />
+
         </View>
     )
 }
 
 export default MessageScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: StatusBar.currentHeight,
+    }
+})

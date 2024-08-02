@@ -1,29 +1,29 @@
-import { Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
-import React from 'react'
-import colors from '../config/colors'
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import colors from '../config/colors';
 
-const ListItemDeleteAction = ({ onPress1 }) => {
+const ListItemDeleteAction = ({ onPress }) => {
     return (
-        <TouchableWithoutFeedback onPress={onPress1}>
+        <TouchableOpacity onPress={onPress}>
             <View style={styles.container}>
                 <Icon
                     name="delete"
-                    size={35}
+                    size={45}
                     color={"green"}
                 />
             </View>
-        </TouchableWithoutFeedback>
-    )
-}
+        </TouchableOpacity>
+    );
+};
 
-export default ListItemDeleteAction
+export default ListItemDeleteAction;
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.danger,
-        width: 70,
-        justifyContent: "center",
-        alignItems: "center",
+        top: 10,
+        position: 'absolute',
+        left: 200,
     },
 });
