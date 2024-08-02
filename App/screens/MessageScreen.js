@@ -31,18 +31,14 @@ const MessageScreen = () => {
         <View >
             <FlatList
                 data={messages}
-                key={item => item.id.toString}
+                key={(item) => item.id.toString}
                 renderItem={({ item }) =>
                     <ListItem
                         image={item.image}
                         title={item.title}
                         subtitle={item.description}
                         onpressitem={() => console.log("yo")}
-                        renderRightActions={() => (
-                            <ListItemDeleteAction
-                                onPress={() => console.log("pressed")}
-                            />
-                        )}
+
                     />
 
                 }

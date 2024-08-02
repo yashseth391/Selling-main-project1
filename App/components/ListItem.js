@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableHighlight, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
@@ -6,10 +6,9 @@ import ListItemDeleteAction from './ListItemDeleteAction'
 
 const ListItem = ({ image, title, subtitle, onpressitem }) => {
     return (
+        <TouchableOpacity
+            onPress={() => console.log("bye")}
 
-        <TouchableHighlight
-            onPress={onpressitem}
-            underlayColor={"E1E1E1"}
         >
             <View style={styles.container}>
                 <Image
@@ -20,16 +19,9 @@ const ListItem = ({ image, title, subtitle, onpressitem }) => {
                     <AppText todisplay={title} style={styles.titletext} />
                     <AppText todisplay={subtitle} style={styles.subtitletext} />
                 </View>
-                <ListItemDeleteAction onpressaction={console.log("hello")} />
+                <ListItemDeleteAction onPress={() => console.log("hello")} />
             </View>
-
-        </TouchableHighlight>
-
-
-
-
-
-
+        </TouchableOpacity>
     )
 }
 
@@ -44,7 +36,6 @@ const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35
-
     },
     titletext: {
         fontWeight: '500'
@@ -54,9 +45,5 @@ const styles = StyleSheet.create({
     },
     info: {
         marginLeft: 8,
-    }
-    ,
-    delete: {
-
     }
 })
