@@ -4,24 +4,31 @@ import AppText from './AppText'
 import colors from '../config/colors'
 import ListItemDeleteAction from './ListItemDeleteAction'
 
-const ListItem = ({ image, title, subtitle, onpressitem }) => {
-    return (
-        <TouchableOpacity
-            onPress={() => console.log("bye")}
+const ListItem = ({ image, title, subtitle, onPressAction, deleteFunction,
+    ImageComponent
 
+}) => {
+
+
+    return (
+        <TouchableHighlight
+            onPress={onPressAction}
+            underlayColor={"#E1E1E1"}
         >
+
             <View style={styles.container}>
-                <Image
+                {ImageComponent}
+                {image && <Image
                     source={image}
                     style={styles.image}
-                />
+                />}
                 <View style={styles.info}  >
                     <AppText todisplay={title} style={styles.titletext} />
-                    <AppText todisplay={subtitle} style={styles.subtitletext} />
+                    {subtitle && <AppText todisplay={subtitle} style={styles.subtitletext} />}
                 </View>
-                <ListItemDeleteAction onPress={() => console.log("hello")} />
+                {deleteFunction && <ListItemDeleteAction onPress={deleteFunction} />}
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
     )
 }
 
@@ -45,5 +52,6 @@ const styles = StyleSheet.create({
     },
     info: {
         marginLeft: 8,
+        justifyContent: "center"
     }
 })
