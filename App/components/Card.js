@@ -11,7 +11,7 @@ const Card = ({ title, price, image }) => {
                 source={image}
             />
             <Text style={styles.text1}> {title} </Text>
-            <Text style={styles.text2}>  {price} </Text>
+            <Text style={styles.text2}> ₹ {price}  </Text>
         </View>
     )
 }
@@ -20,10 +20,11 @@ export default Card
 
 const styles = StyleSheet.create({
     card: {
-        borderRadius: 15,
+        borderRadius: 30,
         backgroundColor: "white",
         marginBottom: 20,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        marginTop: 10
     },
 
 

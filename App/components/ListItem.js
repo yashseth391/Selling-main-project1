@@ -3,6 +3,7 @@ import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
 import ListItemDeleteAction from './ListItemDeleteAction'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 const ListItem = ({ image, title, subtitle, onPressAction, deleteFunction,
     ImageComponent
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         margin: 4,
+        backgroundColor: "white",
     },
     image: {
         width: 70,

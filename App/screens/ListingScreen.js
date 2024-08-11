@@ -1,28 +1,37 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import AppText from '../components/AppText'
-import colors from '../config/colors'
 import ListItem from '../components/ListItem'
+import Card from '../components/Card'
+import colors from '../config/colors'
+const listings = [
+    {
+        id: 1,
+        title: "Red Jacket For Sale",
+        price: 100,
+        image: require("../assets/red_jacket2.jpeg")
+    },
+    {
+        id: 2,
+        title: "Couch For Sale",
+        price: 300,
+        image: require("../assets/couch.jpg")
+    }
+
+]
 const ListingScreen = () => {
     return (
-        <View>
-            <Image
-                source={require("../assets/jacket.jpg")}
-                style={styles.image}
+        <View style={styles.screen}>
+            <FlatList
+                data={listings}
+                keyExtractor={item => item.id.toString()}
+                renderItem={({ item }) =>
+                    <Card
+                        title={item.title}
+                        price={item.price}
+                        image={item.image}
+                    />
+                }
             />
-            <View style={styles.detail}>
-                <AppText todisplay={'Red Jacket For Sale'} style={styles.title} />
-                <AppText todisplay={'$100'} style={styles.price} />
-
-            </View>
-            <View style={styles.usercontainer}>
-                <ListItem
-                    image={require("../assets/owner1.webp")}
-                    title={"Mukesh Ambani"}
-                    subtitle={"8 Listings"}
-                />
-
-            </View>
 
         </View>
     )
@@ -31,27 +40,8 @@ const ListingScreen = () => {
 export default ListingScreen
 
 const styles = StyleSheet.create({
-    detail: {
+    screen: {
         padding: 20,
-    },
 
-    image: {
-        height: 300,
-        width: "100%",
-
-    },
-    price: {
-        color: colors.secondary,
-        paddingTop: 10
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: "500",
-
-    },
-    usercontainer: {
-        marginTop: 40
     }
-
-
 })

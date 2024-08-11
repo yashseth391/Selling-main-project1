@@ -1,28 +1,32 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import ViewImageScreen from './App/screens/ViewImageScreen';
-import ListItemDeleteAction from './App/components/ListItemDeleteAction';
-import MessageScreen from './App/screens/MessageScreen';
-import ListItem from './App/components/ListItem';
-import Screen from './App/screens/Screen';
-import WelcomeScreen from './App/screens/WelcomeScreen';
-import ListingScreen from './App/screens/ListingScreen';
-import AccountScreen from './App/screens/AccountScreen';
-import IconAny from './App/components/IconAny';
+import {StyleSheet, Switch, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+
+import AppTextInput from './App/components/AppTextInput';
+import AppPicker from './App/components/AppPicker';
+import LoginScreen from './App/screens/LoginScreen';
+type Category = {
+  label: string;
+  value: number;
+};
+const categories = [
+  {
+    label: 'Furniture',
+    value: 1,
+  },
+  {
+    label: 'Clothing',
+    value: 2,
+  },
+  {
+    label: 'Cameras',
+    value: 3,
+  },
+];
 
 const App = () => {
   return (
     <View style={styles.main}>
-      <View>
-        <ListItem
-          title={'my Title'}
-          subtitle={''}
-          onPressAction={() => console.log('on press')}
-          deleteFunction={''}
-          image={''}
-          ImageComponent={<IconAny iconName={'email'} />}
-        />
-      </View>
+      <LoginScreen />
     </View>
   );
 };
