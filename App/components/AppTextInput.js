@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     },
     Main: {
 
-
     },
     textinput: {
         marginLeft: 10,
