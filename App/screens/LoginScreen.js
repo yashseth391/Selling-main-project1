@@ -6,9 +6,11 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import AppText from '../components/AppText'
 import ErrorMessage from '../components/ErrorMessage'
+import AppFormField from '../components/AppFormField'
+import SubmitButton from '../components/SubmitButton'
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required().email().label("Emailisamf"),
+    email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password")
 })
 const LoginScreen = () => {
@@ -22,29 +24,32 @@ const LoginScreen = () => {
                 initialValues={{ email: '', password: '' }}
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
+                validateOnMount={false}
             >
-                {({ handleChange, handleSubmit, errors }) => (
+                {() => (
                     <>
-                        <AppTextInput style={styles.textinput}
+                        <AppFormField style={styles.textinput}
                             autocorrect={false}
                             autoCapitalize="none"
                             icon={"email"}
-                            onChangeText={handleChange("email")}
+                            name={"email"}
                             placeholder={"Email"}
                             keyboardType={"email-address"}
                             textContentType={"emailAddress"}
+
                         />
-                        <ErrorMessage error={errors.email} />
-                        <AppTextInput
+
+                        <AppFormField
                             autoCapitalize="none"
                             autocorrect={false}
                             icon="lock"
-                            onChangeText={handleChange("password")}
+                            name={"password"}
                             placeholder={"Password"}
                             secureTextEntry={true}
+
                         />
-                        <ErrorMessage error={errors.password} />
-                        <Button title="Login" onPress={handleSubmit} />
+
+                        <SubmitButton title={"Login"} />
                     </>
                 )}
 
