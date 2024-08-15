@@ -1,15 +1,9 @@
-import { FlatList, Modal, Picker, StatusBar, TouchableWithoutFeedback } from 'react-native';
-
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { FlatList, Modal, StatusBar, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import IconAny from './IconAny'
-import colors from '../config/colors'
-import defaultStyles from '../config/styles'
 import AppText from './AppText';
-import Button from './Button';
 import PickerItem from './PickerItem';
-
-
 const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
@@ -22,7 +16,10 @@ const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) =
                             iconColor='black'
                             bgColor='white'
                         />}
-                        <AppText style={{ textAlignVertical: "center", marginLeft: 10, marginRight: 150 }}
+                        <AppText style={{
+                            textAlignVertical: "center", marginLeft: 10
+                            , marginRight: 150
+                        }}
                             todisplay={selectedItem ? selectedItem.label : placeholder} />
                         <IconAny
                             iconName={"arrow-drop-down"}
@@ -50,14 +47,12 @@ const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) =
                         }}
                     />}
                 />
-
             </Modal>
         </>
     )
 }
 
 export default AppPicker
-
 const styles = StyleSheet.create({
     btn: {
         color: "blue",
@@ -66,22 +61,14 @@ const styles = StyleSheet.create({
         marginLeft: "40%"
 
     },
-
     container: {
         flexDirection: "row",
         padding: 10,
-
-
         marginBottom: 30
     },
     icon: {
         position: "absolute",
-
         left: 400
-
-    },
-    Main: {
-
     },
     txt: {
         flex: 1,

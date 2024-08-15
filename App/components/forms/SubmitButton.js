@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Button from './Button'
+import Button from '../Button'
 import { FormikContext, useFormikContext } from 'formik'
 const SubmitButton = ({ title }) => {
     const { handleSubmit } = useFormikContext();

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import AppTextInput from './AppTextInput'
+import AppTextInput from '../AppTextInput'
 import ErrorMessage from './ErrorMessage'
 import { useFormikContext } from 'formik'
 const AppFormField = ({ name, visible, ...otherProps }) => {
@@ -8,8 +8,6 @@ const AppFormField = ({ name, visible, ...otherProps }) => {
     return (
         <>
             <AppTextInput
-
-
                 onChangeText={handleChange(name)}
                 //   placeholder={"Email"}
                 //   keyboardType={"email-address"}

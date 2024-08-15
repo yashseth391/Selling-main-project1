@@ -1,21 +1,15 @@
-import { Appearance, Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import React from 'react'
-import AppTextInput from '../components/AppTextInput'
-import Button from '../components/Button'
-import { Formik } from 'formik'
 import * as Yup from 'yup'
-import AppText from '../components/AppText'
-import ErrorMessage from '../components/ErrorMessage'
-import AppFormField from '../components/AppFormField'
-import SubmitButton from '../components/SubmitButton'
-import AppForm from '../components/AppForm'
+import AppFormField from '../components/forms/AppFormField'
+import SubmitButton from '../components/forms/SubmitButton'
+import AppForm from '../components/forms/AppForm'
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
     password: Yup.string().required().min(4).label("Password")
 })
 const LoginScreen = () => {
-
     return (
         <View style={styles.container}>
             <Image
@@ -26,17 +20,14 @@ const LoginScreen = () => {
                 onSubmit={(values) => console.log(values)}
                 validationSchema={validationSchema}
             >
-                <AppFormField style={styles.textinput}
+                <AppFormField
                     autocorrect={false}
                     autoCapitalize="none"
                     icon={"email"}
                     name={"email"}
-                    placeholder={"Email"}
+                    placeholder={"Email"} q
                     keyboardType={"email-address"}
-                    textContentType={"emailAddress"}
-
                 />
-
                 <AppFormField
                     autoCapitalize="none"
                     autocorrect={false}
@@ -44,18 +35,14 @@ const LoginScreen = () => {
                     name={"password"}
                     placeholder={"Password"}
                     secureTextEntry={true}
-
                 />
                 <SubmitButton title={"Login"} />
-
             </AppForm>
-
         </View>
     )
 }
 
 export default LoginScreen
-
 const styles = StyleSheet.create({
     container: {
         margin: 10,
@@ -67,10 +54,5 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 50,
         marginBottom: 20,
-
     },
-    textinput: {
-
-    }
-
 })

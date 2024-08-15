@@ -8,7 +8,6 @@ const AppForm = ({ initialValues, onSubmit, validationSchema, children }) => {
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 validationSchema={validationSchema}
-
             >
                 {() => (
                     <>
@@ -22,5 +21,4 @@ const AppForm = ({ initialValues, onSubmit, validationSchema, children }) => {
 }
 
 export default AppForm
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({}) 
