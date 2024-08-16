@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import AppTextInput from '../AppTextInput'
 import ErrorMessage from './ErrorMessage'
 import { useFormikContext } from 'formik'
-const AppFormField = ({ name, visible, ...otherProps }) => {
+
+const AppFormField = ({ name, ...otherProps }) => {
     const { setFieldTouched, errors, touched, handleChange } = useFormikContext();
     return (
         <>
@@ -22,5 +22,3 @@ const AppFormField = ({ name, visible, ...otherProps }) => {
 }
 
 export default AppFormField
-
-const styles = StyleSheet.create({})

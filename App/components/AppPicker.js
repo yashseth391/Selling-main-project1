@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import IconAny from './IconAny'
 import AppText from './AppText';
 import PickerItem from './PickerItem';
+import colors from '../config/colors';
 const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
@@ -64,7 +65,9 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         padding: 10,
-        marginBottom: 30
+        marginBottom: 30,
+        backgroundColor: "#f8f4f4",
+
     },
     icon: {
         position: "absolute",

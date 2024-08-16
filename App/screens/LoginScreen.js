@@ -25,7 +25,7 @@ const LoginScreen = () => {
                     autoCapitalize="none"
                     icon={"email"}
                     name={"email"}
-                    placeholder={"Email"} q
+                    placeholder={"Email"}
                     keyboardType={"email-address"}
                 />
                 <AppFormField
