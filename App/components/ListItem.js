@@ -24,8 +24,9 @@ const ListItem = ({ image, title, subtitle, onPressAction, deleteFunction,
                     style={styles.image}
                 />}
                 <View style={styles.info}  >
-                    <AppText todisplay={title} style={styles.titletext} />
-                    {subtitle && <AppText todisplay={subtitle} style={styles.subtitletext} />}
+                    <AppText todisplay={title} style={styles.titletext} numberOfLines={1} />
+                    {subtitle && <AppText todisplay={subtitle} style={styles.subtitletext}
+                        numberOfLines={2} />}
                 </View>
                 {deleteFunction && <ListItemDeleteAction onPress={deleteFunction} />}
             </View>
@@ -47,7 +48,8 @@ const styles = StyleSheet.create({
         borderRadius: 35
     },
     titletext: {
-        fontWeight: '500'
+        fontWeight: '500',
+
     },
     subtitletext: {
         color: colors.medium

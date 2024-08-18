@@ -8,14 +8,14 @@ import ListItemSeparator from '../components/ListItemSeparator'
 const initialMessages = [
     {
         id: 1,
-        title: 't1',
-        description: 'd1',
+        title: 'Yash Seth',
+        description: 'Hey Is this item still available?',
         image: require("../assets/owner1.webp")
     },
     {
         id: 2,
-        title: 't2',
-        description: 'd2',
+        title: 'Yash Seth',
+        description: 'I am interested in this item. When can I come and pick it up?',
         image: require("../assets/owner1.webp")
     },
     {

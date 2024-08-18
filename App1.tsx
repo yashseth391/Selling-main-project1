@@ -4,6 +4,10 @@ import React, {useState} from 'react';
 import AppTextInput from './App/components/AppTextInput';
 
 import ListingEditingScreen from './App/screens/ListingEditingScreen';
+import RegisterScreen from './App/screens/RegisterScreen';
+import MessageScreen from './App/screens/MessageScreen';
+import Testing from './App/screens/Testing';
+import ListingScreen from './App/screens/ListingScreen';
 type Category = {
   label: string;
   value: number;
@@ -26,7 +30,7 @@ const categories = [
 const App = () => {
   return (
     <View style={styles.main}>
-      <ListingEditingScreen />
+      <MessageScreen />
     </View>
   );
 };
