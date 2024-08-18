@@ -1,8 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Icon from './Icon'
-import App from '../../App1'
-import AppText from './AppText'
 import IconAny from './IconAny'
 
 import { TouchableWithoutFeedback } from 'react-native'
@@ -30,5 +27,6 @@ const styles = StyleSheet.create({
         color: "black",
 
         fontSize: 20,
+        textAlign: "center",
     }
 })

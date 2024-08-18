@@ -43,6 +43,7 @@ const AppPicker = ({ width, icon, selectedItem, onSelectedItem, placeholder, ite
                     <Text style={styles.btn}>Close</Text>
                 </TouchableWithoutFeedback>
                 <FlatList
+                    numColumns={3}
                     data={items}
                     keyExtractor={item => item.value.toString()}
                     renderItem={({ item }) => <CategoryPickerItem
