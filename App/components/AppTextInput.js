@@ -3,9 +3,9 @@ import React from 'react'
 import IconAny from './IconAny'
 import colors from '../config/colors'
 import defaultStyles from '../config/styles'
-const AppTextInput = ({ placeholder, icon, ...otherprops }) => {
+const AppTextInput = ({ placeholder, width = "100%", icon, ...otherprops }) => {
     return (
-        <View style={styles.Main}>
+        <View style={[styles.Main, { width }]}>
             <View style={styles.container}>
                 {icon && <IconAny
                     iconName={icon}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderBottomWidth: 3,
         borderBottomColor: "#E1E1E1",
-        backgroundColor: "#E1E1E1",
+        backgroundColor: "#f8f4f4",
         marginBottom: 10,
         borderRadius: 20,
     },

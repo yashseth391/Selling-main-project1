@@ -9,6 +9,7 @@ import AppFormPicker from '../components/forms/AppFormPicker';
 
 
 import SubmitButton from '../components/forms/SubmitButton';
+import CategoryPickerItem from '../components/CategoryPickerItem';
 const ListingEditingScreen = () => {
     const validationSchema = Yup.object().shape({
         title: Yup.string().required().min(1).label('Tittle'),
@@ -17,10 +18,41 @@ const ListingEditingScreen = () => {
         category: Yup.object().required().nullable().label('Category'),
     });
     const categories = [
-        { label: 'Furniture', value: 1 },
-        { label: 'Clothing', value: 2 },
-        { label: 'Camera', value: 3 },
-    ];
+        {
+            label: "Furniture",
+            value: 1,
+            icon: "house",
+            backgroundColor: "red",
+        },
+        { label: "Cars", value: 2, icon: "airport-shuttle", backgroundColor: "green" },
+        { label: "Cameras", value: 3, icon: "camera", backgroundColor: "blue" },
+        { label: "Games", value: 4, icon: "games", backgroundColor: "red" },
+        {
+            label: "Clothing",
+            value: 5,
+            icon: "dry-cleaning",
+            backgroundColor: "green",
+        },
+        {
+            label: "Sports",
+            value: 6,
+            icon: "downhill-skiing",
+            backgroundColor: "blue",
+        },
+        {
+            label: "Movies & Music",
+            value: 7,
+            icon: "headphones",
+            backgroundColor: "red",
+        },
+        {
+            label: "Books",
+            value: 8,
+            icon: "file-copy",
+            backgroundColor: "green",
+        },
+        { label: "Others", value: 9, icon: "explore", backgroundColor: "blue" },
+    ]
 
     return <View style={styles.container}>
         <AppForm
@@ -36,11 +68,14 @@ const ListingEditingScreen = () => {
             <AppFormField maxLength={255} name="title" placeholder="Title" />
             <AppFormField keyboardType="numeric" maxLength={8}
                 name={"price"} placeholder="Price"
+                width={120}
             />
             <AppFormPicker
                 items={categories}
                 name="category"
                 placeholder="Category"
+                width="50%"
+
             />
             <AppFormField maxLength={225}
                 numberOfLines={3}
@@ -58,6 +93,6 @@ export default ListingEditingScreen;
 
 const styles = StyleSheet.create({
     container: {
-
+        marginTop: StatusBar.currentHeight
     }
 });

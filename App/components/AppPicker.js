@@ -5,7 +5,12 @@ import IconAny from './IconAny'
 import AppText from './AppText';
 import PickerItem from './PickerItem';
 import colors from '../config/colors';
-const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) => {
+import PickerItemComponent from './PickerItem';
+import CategoryPickerItem from './CategoryPickerItem';
+const AppPicker = ({ width, icon, selectedItem, onSelectedItem, placeholder, items
+
+
+}) => {
     const [modalVisible, setModalVisible] = useState(false)
     return (
         <>
@@ -32,7 +37,7 @@ const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) =
                     </View>
                 </View>
             </TouchableWithoutFeedback>
-            <Modal visible={modalVisible} animationType='slide' >
+            <Modal visible={modalVisible} animationType='slide' style={{ width }} >
                 <TouchableWithoutFeedback
                     onPress={() => setModalVisible(false)}>
                     <Text style={styles.btn}>Close</Text>
@@ -40,7 +45,8 @@ const AppPicker = ({ icon, selectedItem, onSelectedItem, placeholder, items }) =
                 <FlatList
                     data={items}
                     keyExtractor={item => item.value.toString()}
-                    renderItem={({ item }) => <PickerItem
+                    renderItem={({ item }) => <CategoryPickerItem
+                        item={item}
                         label={item.label}
                         onPress={() => {
                             setModalVisible(false);

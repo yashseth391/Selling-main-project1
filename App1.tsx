@@ -30,7 +30,7 @@ const categories = [
 const App = () => {
   return (
     <View style={styles.main}>
-      <MessageScreen />
+      <ListingEditingScreen />
     </View>
   );
 };
