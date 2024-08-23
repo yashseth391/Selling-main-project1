@@ -42,6 +42,8 @@ const categories = [
 const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const requestCameraPermission = async () => {
+    //abhi ke liye
+    return true;
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.CAMERA,
@@ -60,6 +62,8 @@ const App = () => {
     }
   };
   const requestStoragePermission = async () => {
+    //abhi ke liye
+    return true;
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
@@ -81,7 +85,7 @@ const App = () => {
   const handleCameraOpen = async () => {
     const hasCameraPermission = await requestCameraPermission();
     if (!hasCameraPermission) {
-      Alert.alert('Camera permission denied');
+      Alert.alert('Camera does not have permission');
       return;
     }
 
@@ -108,7 +112,7 @@ const App = () => {
   const handleGalleryOpen = async () => {
     const hasStoragePermission = await requestStoragePermission();
     if (!hasStoragePermission) {
-      Alert.alert('Storage permission denied');
+      Alert.alert('Storage does not have permission');
       return;
     }
 
