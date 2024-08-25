@@ -9,17 +9,17 @@ import {
   PermissionsAndroid,
   Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import AppTextInput from './App/components/AppTextInput';
-
+import Constants from 'expo-constants';
 import ListingEditingScreen from './App/screens/ListingEditingScreen';
 import {
   launchCamera,
   launchImageLibrary,
   MediaType,
 } from 'react-native-image-picker';
-
+import * as ImagePicker from 'expo-image-picker';
 type Category = {
   label: string;
   value: number;
@@ -131,25 +131,19 @@ const App = () => {
     });
   };
 
+  const requestPermission = async () => {
+    const {granted} = await ImagePicker.requestCameraPermissionsAsync();
+    if (!granted) {
+      Alert.alert('You need to enable permission to access the library');
+    }
+  };
+
+  useEffect(() => {
+    requestPermission();
+  }, []);
   return (
-    <View style={styles.main}>
-      <Image
-        source={
-          selectedImage == null
-            ? require('./App/assets/owner1.webp')
-            : {uri: selectedImage}
-        }
-        style={styles.image}
-      />
-      <TouchableOpacity onPress={handleCameraOpen} style={styles.button}>
-        <Text style={styles.txt}>Open Camera</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleGalleryOpen} style={styles.button}>
-        <Text style={styles.txt}>Open Gallery</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={requestCameraPermission}>
-        <Text style={styles.txt}>Permissions</Text>
-      </TouchableOpacity>
+    <View>
+      <Text>Image Picker</Text>
     </View>
   );
 };
