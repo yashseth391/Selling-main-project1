@@ -42,8 +42,6 @@ const categories = [
 const App = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const requestCameraPermission = async () => {
-    //abhi ke liye
-    return true;
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.CAMERA,
@@ -62,8 +60,6 @@ const App = () => {
     }
   };
   const requestStoragePermission = async () => {
-    //abhi ke liye
-    return true;
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
