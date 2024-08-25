@@ -11,14 +11,12 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
-import AppTextInput from './App/components/AppTextInput';
-import Constants from 'expo-constants';
-import ListingEditingScreen from './App/screens/ListingEditingScreen';
 import {
   launchCamera,
   launchImageLibrary,
   MediaType,
 } from 'react-native-image-picker';
+import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
 type Category = {
   label: string;
