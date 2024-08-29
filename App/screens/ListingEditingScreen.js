@@ -57,6 +57,7 @@ const ListingEditingScreen = () => {
 
     return <View style={styles.container}>
         <ImageLibrary />
+        <ImageLibrary />
         <AppForm
             initialValues={{
                 title: '',
