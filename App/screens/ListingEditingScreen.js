@@ -10,6 +10,7 @@ import AppFormPicker from '../components/forms/AppFormPicker';
 
 import SubmitButton from '../components/forms/SubmitButton';
 import CategoryPickerItem from '../components/CategoryPickerItem';
+import ImageLibrary from '../components/ImageLibrary';
 const ListingEditingScreen = () => {
     const validationSchema = Yup.object().shape({
         title: Yup.string().required().min(1).label('Tittle'),
@@ -55,6 +56,7 @@ const ListingEditingScreen = () => {
     ]
 
     return <View style={styles.container}>
+        <ImageLibrary />
         <AppForm
             initialValues={{
                 title: '',

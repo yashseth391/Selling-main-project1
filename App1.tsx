@@ -1,14 +1,4 @@
-import {
-  StyleSheet,
-  Switch,
-  Text,
-  TextInput,
-  View,
-  Image,
-  TouchableOpacity,
-  PermissionsAndroid,
-  Alert,
-} from 'react-native';
+import {StyleSheet, Text, View, PermissionsAndroid, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 import AppTextInput from './App/components/AppTextInput';
@@ -20,6 +10,7 @@ import {
   MediaType,
 } from 'react-native-image-picker';
 import * as ImagePicker from 'expo-image-picker';
+import ImageLibrary from './App/components/ImageLibrary';
 type Category = {
   label: string;
   value: number;
@@ -77,34 +68,6 @@ const App = () => {
       return false;
     }
   };
-
-  const handleCameraOpen = async () => {
-    const hasCameraPermission = await requestCameraPermission();
-    if (!hasCameraPermission) {
-      Alert.alert('Camera does not have permission');
-      return;
-    }
-
-    const options = {
-      mediaType: 'photo',
-      includeBase64: false,
-      maxHeight: 2000,
-      maxWidth: 2000,
-    };
-
-    launchCamera(options, response => {
-      if (response.didCancel) {
-        console.log('User cancelled camera');
-      } else if (response.errorCode) {
-        console.log('Camera Error: ', response.errorMessage);
-      } else {
-        let imageUri = response.uri || response.assets?.[0]?.uri;
-        setSelectedImage(imageUri);
-        console.log(imageUri);
-      }
-    });
-  };
-
   const handleGalleryOpen = async () => {
     const hasStoragePermission = await requestStoragePermission();
     if (!hasStoragePermission) {
@@ -118,17 +81,6 @@ const App = () => {
       maxHeight: 2000,
       maxWidth: 2000,
     };
-
-    launchImageLibrary(options, response => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.errorCode) {
-        console.log('Image picker error: ', response.errorMessage);
-      } else {
-        let imageUri = response.uri || response.assets?.[0]?.uri;
-        setSelectedImage(imageUri);
-      }
-    });
   };
 
   const requestPermission = async () => {
@@ -143,7 +95,7 @@ const App = () => {
   }, []);
   return (
     <View>
-      <Text>Image Picker</Text>
+      <ListingEditingScreen />
     </View>
   );
 };
@@ -163,7 +115,6 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   main: {
-    flex: 1,
     backgroundColor: 'white',
     paddingRight: 10,
     justifyContent: 'center',
