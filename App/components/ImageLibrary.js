@@ -41,7 +41,7 @@ const ImageLibrary = () => {
             <TouchableOpacity onPress={selectImage} style={styles.image}>
                 <IconAny
                     iconName="camera-alt"
-                    iconSize={100}
+                    iconSize={90}
                     iconColor="black"
                     bgColor="white"
                 />

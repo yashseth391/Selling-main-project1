@@ -30,6 +30,10 @@ class MainApplication : Application(), ReactApplication {
 
         override val isHermesEnabled: Boolean
           get() = BuildConfig.IS_HERMES_ENABLED
+
+        override fun getUseDeveloperSupport(): Boolean {
+          return BuildConfig.DEBUG
+        }
       })
 
   override val reactHost: ReactHost

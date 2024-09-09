@@ -1,16 +1,7 @@
 import {StyleSheet, Text, View, PermissionsAndroid, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
-
-import AppTextInput from './App/components/AppTextInput';
-import Constants from 'expo-constants';
 import ListingEditingScreen from './App/screens/ListingEditingScreen';
-import {
-  launchCamera,
-  launchImageLibrary,
-  MediaType,
-} from 'react-native-image-picker';
-import * as ImagePicker from 'expo-image-picker';
-import ImageLibrary from './App/components/ImageLibrary';
+
 type Category = {
   label: string;
   value: number;
@@ -30,69 +21,7 @@ const categories = [
   },
 ];
 
-const App = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const requestCameraPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: 'Camera Permission',
-          message: 'App need Permission',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      return granted === PermissionsAndroid.RESULTS.GRANTED;
-    } catch (err) {
-      console.warn(err);
-      return false;
-    }
-  };
-  const requestStoragePermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-        {
-          title: 'Storage Permission',
-          message: 'App needs storage permission to access photos',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      return granted === PermissionsAndroid.RESULTS.GRANTED;
-    } catch (err) {
-      console.warn(err);
-      return false;
-    }
-  };
-  const handleGalleryOpen = async () => {
-    const hasStoragePermission = await requestStoragePermission();
-    if (!hasStoragePermission) {
-      Alert.alert('Storage does not have permission');
-      return;
-    }
-
-    const options = {
-      mediaType: 'photo',
-      includeBase64: false,
-      maxHeight: 2000,
-      maxWidth: 2000,
-    };
-  };
-
-  const requestPermission = async () => {
-    const {granted} = await ImagePicker.requestCameraPermissionsAsync();
-    if (!granted) {
-      Alert.alert('You need to enable permission to access the library');
-    }
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
+const App1 = () => {
   return (
     <View>
       <ListingEditingScreen />
@@ -100,7 +29,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default App1;
 
 const styles = StyleSheet.create({
   button: {
