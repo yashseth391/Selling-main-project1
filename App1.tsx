@@ -2,6 +2,9 @@ import {StyleSheet, Text, View, PermissionsAndroid, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import ListingEditingScreen from './App/screens/ListingEditingScreen';
 
+import ImageInputList from './App/components/ImageInputList';
+import ImageInput from './App/components/ImageInput';
+
 type Category = {
   label: string;
   value: number;
@@ -22,6 +25,11 @@ const categories = [
 ];
 
 const App1 = () => {
+  const [imageUris, setImageUris] = useState<string[]>([]);
+
+  const handleAddImage = (newImageUri: string) => {
+    setImageUris([...imageUris, newImageUri]); // Correctly updating the state
+  };
   return (
     <View>
       <ListingEditingScreen />

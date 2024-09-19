@@ -5,14 +5,15 @@ import {
     Image,
     TouchableOpacity,
     Alert,
+    ScrollView,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 import IconAny from './IconAny';
 
-const ImageLibrary = () => {
-    const [imageUri, setImageUri] = useState('');
+const ImageInput = ({ onChangeImage }) => {
+    const [imageUris, setImageUris] = useState([]);
     const requestPermission = async () => {
         const { granted } = await ImagePicker.requestCameraPermissionsAsync();
 
@@ -26,18 +27,40 @@ const ImageLibrary = () => {
     }, []);
     const selectImage = async () => {
         try {
-            const result = await ImagePicker.launchImageLibraryAsync();
+            const result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
+                quality: 0.5,
+            });
+
             if (result.canceled) {
                 console.log('User cancelled image picker');
             } else {
-                setImageUri(result.assets[0].uri);
+                const newImageUri = result.assets[0].uri;
+                setImageUris([...imageUris, newImageUri]);
+                onChangeImage([...imageUris, newImageUri]);
             }
         } catch (error) {
             console.log('Error reading an image', error);
         }
     };
+    const deselectImage = (uri) => {
+        Alert.alert('Delete', 'Are you sure you want to delete this image?', [
+            {
+                text: 'Yes',
+                onPress: () => {
+                    const newImageUris = imageUris.filter((imageUri) => imageUri !== uri);
+                    setImageUris(newImageUris);
+                    onChangeImage(newImageUris);
+                },
+            },
+            {
+                text: 'No',
+            },
+        ]);
+    };
+
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container} horizontal={true}>
             <TouchableOpacity onPress={selectImage} style={styles.image}>
                 <IconAny
                     iconName="camera-alt"
@@ -46,12 +69,16 @@ const ImageLibrary = () => {
                     bgColor="white"
                 />
             </TouchableOpacity>
-            {imageUri && <Image source={{ uri: imageUri }} style={styles.image} />}
-        </View>
+            {imageUris.map((uri, index) => (
+                <TouchableOpacity key={index} onPress={() => deselectImage(uri)}>
+                    <Image source={{ uri: uri }} style={styles.image} />
+                </TouchableOpacity>
+            ))}
+        </ScrollView>
     );
 };
 
-export default ImageLibrary;
+export default ImageInput;
 
 const styles = StyleSheet.create({
     button: {
@@ -62,7 +89,8 @@ const styles = StyleSheet.create({
     },
     container: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
+
+
     },
     icon: {
         height: 130,
@@ -71,7 +99,7 @@ const styles = StyleSheet.create({
     image: {
         margin: 5,
         height: 130,
-        width: 140,
+        width: 109,
     },
     txt: {
         fontSize: 20,

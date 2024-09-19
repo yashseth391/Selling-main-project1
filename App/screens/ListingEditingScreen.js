@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, StatusBar, BackHandler } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
 
 import AppForm from '../components/forms/AppForm';
@@ -9,10 +9,17 @@ import AppFormPicker from '../components/forms/AppFormPicker';
 
 
 import SubmitButton from '../components/forms/SubmitButton';
-import ImageLibrary from '../components/ImageLibrary';
+
+import ImageInput from '../components/ImageInput';
 
 
 const ListingEditingScreen = () => {
+
+    const [imageUris, setImageUris] = useState([]);
+
+    const handleAddImage = (newImageUri) => {
+        setImageUris([...imageUris, newImageUri]); // Correctly updating the state
+    };
     const validationSchema = Yup.object().shape({
         title: Yup.string().required().min(1).label('Tittle'),
         price: Yup.number().required().min(1).max(10000).label('Price'),
@@ -56,8 +63,9 @@ const ListingEditingScreen = () => {
         { label: "Others", value: 9, icon: "explore", backgroundColor: "blue" },
     ]
 
+
     return <View style={styles.container}>
-        <ImageLibrary />
+        <ImageInput onChangeImage={handleAddImage} />
         <AppForm
             initialValues={{
                 title: '',
