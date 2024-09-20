@@ -1,6 +1,5 @@
 import {
     StyleSheet,
-    Text,
     View,
     Image,
     TouchableOpacity,
@@ -12,7 +11,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
 import IconAny from './IconAny';
 
-const ImageInput = ({ onChangeImage }) => {
+const ImageInput = ({ onRemoveImage, onAddImage }) => {
     const [imageUris, setImageUris] = useState([]);
     const requestPermission = async () => {
         const { granted } = await ImagePicker.requestCameraPermissionsAsync();
@@ -25,6 +24,7 @@ const ImageInput = ({ onChangeImage }) => {
     useEffect(() => {
         requestPermission();
     }, []);
+
     const selectImage = async () => {
         try {
             const result = await ImagePicker.launchImageLibraryAsync({
@@ -37,12 +37,13 @@ const ImageInput = ({ onChangeImage }) => {
             } else {
                 const newImageUri = result.assets[0].uri;
                 setImageUris([...imageUris, newImageUri]);
-                onChangeImage([...imageUris, newImageUri]);
+                onAddImage([...imageUris, newImageUri]);
             }
         } catch (error) {
             console.log('Error reading an image', error);
         }
     };
+
     const deselectImage = (uri) => {
         Alert.alert('Delete', 'Are you sure you want to delete this image?', [
             {
@@ -50,7 +51,7 @@ const ImageInput = ({ onChangeImage }) => {
                 onPress: () => {
                     const newImageUris = imageUris.filter((imageUri) => imageUri !== uri);
                     setImageUris(newImageUris);
-                    onChangeImage(newImageUris);
+                    onRemoveImage(newImageUris);
                 },
             },
             {
@@ -58,14 +59,17 @@ const ImageInput = ({ onChangeImage }) => {
             },
         ]);
     };
-    const scrollView = useRef()
+
+    const scrollView = useRef();
+
     return (
-
         <View>
-            <ScrollView style={styles.container} horizontal={true} ref={scrollView}
-                onContentSizeChange={() => { scrollView.current.scrollToEnd() }}
+            <ScrollView
+                style={styles.container}
+                horizontal={true}
+                ref={scrollView}
+                onContentSizeChange={() => scrollView.current.scrollToEnd({ animated: true })}
             >
-
                 {imageUris.map((uri, index) => (
                     <TouchableOpacity key={index} onPress={() => deselectImage(uri)}>
                         <Image source={{ uri: uri }} style={styles.image} />
@@ -80,6 +84,7 @@ const ImageInput = ({ onChangeImage }) => {
                     />
                 </TouchableOpacity>
             </ScrollView>
+
         </View>
     );
 };
@@ -95,8 +100,6 @@ const styles = StyleSheet.create({
     },
     container: {
         flexDirection: 'row',
-
-
     },
     icon: {
         height: 130,
