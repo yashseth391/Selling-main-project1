@@ -7,7 +7,7 @@ import {
     Alert,
     ScrollView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 import IconAny from './IconAny';
@@ -58,23 +58,29 @@ const ImageInput = ({ onChangeImage }) => {
             },
         ]);
     };
-
+    const scrollView = useRef()
     return (
-        <ScrollView style={styles.container} horizontal={true}>
-            <TouchableOpacity onPress={selectImage} style={styles.image}>
-                <IconAny
-                    iconName="camera-alt"
-                    iconSize={90}
-                    iconColor="black"
-                    bgColor="white"
-                />
-            </TouchableOpacity>
-            {imageUris.map((uri, index) => (
-                <TouchableOpacity key={index} onPress={() => deselectImage(uri)}>
-                    <Image source={{ uri: uri }} style={styles.image} />
+
+        <View>
+            <ScrollView style={styles.container} horizontal={true} ref={scrollView}
+                onContentSizeChange={() => { scrollView.current.scrollToEnd() }}
+            >
+
+                {imageUris.map((uri, index) => (
+                    <TouchableOpacity key={index} onPress={() => deselectImage(uri)}>
+                        <Image source={{ uri: uri }} style={styles.image} />
+                    </TouchableOpacity>
+                ))}
+                <TouchableOpacity onPress={selectImage} style={styles.image}>
+                    <IconAny
+                        iconName="camera-alt"
+                        iconSize={90}
+                        iconColor="black"
+                        bgColor="white"
+                    />
                 </TouchableOpacity>
-            ))}
-        </ScrollView>
+            </ScrollView>
+        </View>
     );
 };
 
