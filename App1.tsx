@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import ListingEditingScreen from './App/screens/ListingEditingScreen';
 
 import ImageInput from './App/components/ImageInput';
+import Location from './App/components/Location';
 
 type Category = {
   label: string;
@@ -31,7 +32,7 @@ const App1 = () => {
   };
   return (
     <View>
-      <ListingEditingScreen />
+      <Location />
     </View>
   );
 };
