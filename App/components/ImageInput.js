@@ -10,9 +10,12 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
 import IconAny from './IconAny';
+import ErrorMessage from './forms/ErrorMessage';
 
 const ImageInput = ({ onRemoveImage, onAddImage }) => {
     const [imageUris, setImageUris] = useState([]);
+    const [touched, setTouched] = useState(false);
+    const [len, setLen] = useState(0);
     const requestPermission = async () => {
         const { granted } = await ImagePicker.requestCameraPermissionsAsync();
 
@@ -23,7 +26,10 @@ const ImageInput = ({ onRemoveImage, onAddImage }) => {
 
     useEffect(() => {
         requestPermission();
-    }, []);
+        console.log(imageUris.length);
+        setLen(imageUris.length);
+    }, [imageUris]);
+
 
     const selectImage = async () => {
         try {
@@ -31,13 +37,14 @@ const ImageInput = ({ onRemoveImage, onAddImage }) => {
                 mediaTypes: ImagePicker.MediaTypeOptions.Images,
                 quality: 0.5,
             });
-
+            setTouched(true);
             if (result.canceled) {
                 console.log('User cancelled image picker');
             } else {
                 const newImageUri = result.assets[0].uri;
                 setImageUris([...imageUris, newImageUri]);
                 onAddImage([...imageUris, newImageUri]);
+
             }
         } catch (error) {
             console.log('Error reading an image', error);
@@ -52,6 +59,8 @@ const ImageInput = ({ onRemoveImage, onAddImage }) => {
                     const newImageUris = imageUris.filter((imageUri) => imageUri !== uri);
                     setImageUris(newImageUris);
                     onRemoveImage(newImageUris);
+
+
                 },
             },
             {
@@ -84,6 +93,9 @@ const ImageInput = ({ onRemoveImage, onAddImage }) => {
                     />
                 </TouchableOpacity>
             </ScrollView>
+            {
+                touched && len === 0 && <ErrorMessage error="Please select atleast one image" visible={true} />
+            }
 
         </View>
     );
