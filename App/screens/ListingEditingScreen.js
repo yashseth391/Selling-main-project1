@@ -10,8 +10,9 @@ import AppFormPicker from '../components/forms/AppFormPicker';
 
 import SubmitButton from '../components/forms/SubmitButton';
 
-import ImageInput from '../components/ImageInput';
+
 import FormImagePicker from '../components/forms/FormImagePicker';
+import Location from '../components/Location';
 
 
 const ListingEditingScreen = () => {
@@ -100,7 +101,7 @@ const ListingEditingScreen = () => {
             />
             <SubmitButton title="Post" />
         </AppForm>
-
+        <Location />
     </View>;
 };
 

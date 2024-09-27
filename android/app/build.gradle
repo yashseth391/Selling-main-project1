@@ -1,3 +1,14 @@
+buildscript {
+ ext {
+   // .....
+   playServicesLocationVersion = "21.0.1" // add this 
+   // .....
+  }
+}
+
+
+
+
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"

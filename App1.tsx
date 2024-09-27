@@ -32,7 +32,7 @@ const App1 = () => {
   };
   return (
     <View>
-      <Location />
+      <ListingEditingScreen />
     </View>
   );
 };
