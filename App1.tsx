@@ -4,6 +4,7 @@ import ListingEditingScreen from './App/screens/ListingEditingScreen';
 
 import ImageInput from './App/components/ImageInput';
 import Location from './App/components/Location';
+import WelcomeScreen from './App/screens/WelcomeScreen';
 
 type Category = {
   label: string;
@@ -25,11 +26,6 @@ const categories = [
 ];
 
 const App1 = () => {
-  const [imageUris, setImageUris] = useState<string[]>([]);
-
-  const handleAddImage = (newImageUri: string) => {
-    setImageUris([...imageUris, newImageUri]); // Correctly updating the state
-  };
   return (
     <View>
       <ListingEditingScreen />
