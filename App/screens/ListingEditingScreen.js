@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, BackHandler } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, BackHandler, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 
@@ -67,7 +67,7 @@ const ListingEditingScreen = () => {
     ]
 
 
-    return <View style={styles.container}>
+    return <ScrollView style={styles.container} scrollEnabled>
 
         <AppForm
             initialValues={{
@@ -102,7 +102,7 @@ const ListingEditingScreen = () => {
             <SubmitButton title="Post" />
         </AppForm>
         <Location />
-    </View>;
+    </ScrollView>;
 };
 
 export default ListingEditingScreen;

@@ -1,35 +1,59 @@
 import {StyleSheet, Text, View, PermissionsAndroid, Alert} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import ListingEditingScreen from './App/screens/ListingEditingScreen';
 
-import ImageInput from './App/components/ImageInput';
-import Location from './App/components/Location';
-import WelcomeScreen from './App/screens/WelcomeScreen';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './App/screens/Home';
+import Button from './App/components/Button';
 
-type Category = {
-  label: string;
-  value: number;
+// type define nhi kiya
+// export type RootStackParamList = {
+//   Home: undefined;
+//   ListingEditing: undefined;
+//   Account: undefined;
+//   Message: undefined;
+// };
+const Link = () => {
+  const navigation = useNavigation();
+
+  return (
+    <Button title={'Click'} onPress={() => navigation.navigate('Account')} />
+  );
 };
-const categories = [
-  {
-    label: 'Furniture',
-    value: 1,
-  },
-  {
-    label: 'Clothing',
-    value: 2,
-  },
-  {
-    label: 'Cameras',
-    value: 3,
-  },
-];
+
+const Stack = createNativeStackNavigator();
+const StackNavigator = () => (
+  <Stack.Navigator
+    screenOptions={{
+      headerStyle: {backgroundColor: 'dodgerblue'},
+      headerTintColor: 'white',
+    }}>
+    <Stack.Screen name="Tweets" component={Tweets} />
+    <Stack.Screen name="TweetDetails" component={TweetDetails} options={{}} />
+  </Stack.Navigator>
+);
+const Tweets = ({navigation}) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.txt}>Tweets</Text>
+      <Button
+        title={'Click'}
+        onPress={() => navigation.navigate('TweetDetails', {id: '1'})}
+      />
+    </View>
+  );
+};
+const TweetDetails = ({route}) => (
+  <View style={styles.container}>
+    <Text style={styles.txt}>TweetDetail {route.params.id}</Text>
+  </View>
+);
 
 const App1 = () => {
   return (
-    <View>
-      <ListingEditingScreen />
-    </View>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 };
 
@@ -42,6 +66,7 @@ const styles = StyleSheet.create({
     width: 130,
     margin: 10,
   },
+  container: {},
   image: {
     height: 200,
     width: 200,
@@ -56,6 +81,7 @@ const styles = StyleSheet.create({
 
   txt: {
     fontSize: 20,
-    color: 'white',
+    color: 'black',
+    alignItems: 'center',
   },
 });
