@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 10,
         marginBottom: 30,
-        backgroundColor: "#f8f4f4",
+        backgroundColor: colors.secondary,
 
     },
     icon: {

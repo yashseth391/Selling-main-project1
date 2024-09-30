@@ -5,7 +5,10 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './App/screens/Home';
 import Button from './App/components/Button';
-
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import AccountScreen from './App/screens/AccountScreen';
+import IconAny from './App/components/IconAny';
+import HomeScreen from './App/screens/HomeScreen';
 // type define nhi kiya
 // export type RootStackParamList = {
 //   Home: undefined;
@@ -13,6 +16,7 @@ import Button from './App/components/Button';
 //   Account: undefined;
 //   Message: undefined;
 // };
+
 const Link = () => {
   const navigation = useNavigation();
 
@@ -50,11 +54,7 @@ const TweetDetails = ({route}) => (
 );
 
 const App1 = () => {
-  return (
-    <NavigationContainer>
-      <StackNavigator />
-    </NavigationContainer>
-  );
+  return <HomeScreen />;
 };
 
 export default App1;

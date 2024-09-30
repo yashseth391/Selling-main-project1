@@ -13,6 +13,8 @@ import SubmitButton from '../components/forms/SubmitButton';
 
 import FormImagePicker from '../components/forms/FormImagePicker';
 import Location from '../components/Location';
+import colors from '../config/colors';
+
 
 
 const ListingEditingScreen = () => {
@@ -67,7 +69,7 @@ const ListingEditingScreen = () => {
     ]
 
 
-    return <ScrollView style={styles.container} scrollEnabled>
+    return <ScrollView style={styles.container} scrollEnabled >
 
         <AppForm
             initialValues={{
@@ -99,7 +101,7 @@ const ListingEditingScreen = () => {
                 name={"description"}
                 placeholder="Description"
             />
-            <SubmitButton title="Post" />
+            <SubmitButton title="Post" colorI="primary" />
         </AppForm>
         <Location />
     </ScrollView>;
@@ -109,6 +111,7 @@ export default ListingEditingScreen;
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: StatusBar.currentHeight
+        marginTop: StatusBar.currentHeight,
+        backgroundColor: "#bdb9b9"
     }
 });

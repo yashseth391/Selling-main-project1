@@ -15,7 +15,7 @@ const AppTextInput = ({ placeholder, width = "100%", icon, ...otherprops }) => {
                 />}
                 <TextInput
                     placeholder={placeholder}
-                    placeholderTextColor={"grey"}
+                    placeholderTextColor={"black"}
                     {...otherprops}
                     style={[styles.textinput, defaultStyles.text]}
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderBottomWidth: 3,
         borderBottomColor: "#E1E1E1",
-        backgroundColor: "#f8f4f4",
+        backgroundColor: colors.secondary,
         marginBottom: 10,
         borderRadius: 20,
     },
