@@ -9,9 +9,6 @@ import MessageScreen from './MessageScreen';
 const HomeScreen = () => {
     const Tab = createBottomTabNavigator();
     const TabNavigator = () => {
-
-
-
         return (
             <Tab.Navigator>
                 <Tab.Screen name="Message" component={MessageScreen} />

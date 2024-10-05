@@ -1,14 +1,9 @@
-import {StyleSheet, Text, View, PermissionsAndroid, Alert} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
+import WelcomeScreen from './App/screens/WelcomeScreen';
+import AuthNavigation from './App/navigation/AuthNavigation';
+import AppNavigator from './App/navigation/AppNavigator';
 
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './App/screens/Home';
-import Button from './App/components/Button';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import AccountScreen from './App/screens/AccountScreen';
-import IconAny from './App/components/IconAny';
-import HomeScreen from './App/screens/HomeScreen';
 // type define nhi kiya
 // export type RootStackParamList = {
 //   Home: undefined;
@@ -17,44 +12,8 @@ import HomeScreen from './App/screens/HomeScreen';
 //   Message: undefined;
 // };
 
-const Link = () => {
-  const navigation = useNavigation();
-
-  return (
-    <Button title={'Click'} onPress={() => navigation.navigate('Account')} />
-  );
-};
-
-const Stack = createNativeStackNavigator();
-const StackNavigator = () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {backgroundColor: 'dodgerblue'},
-      headerTintColor: 'white',
-    }}>
-    <Stack.Screen name="Tweets" component={Tweets} />
-    <Stack.Screen name="TweetDetails" component={TweetDetails} options={{}} />
-  </Stack.Navigator>
-);
-const Tweets = ({navigation}) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.txt}>Tweets</Text>
-      <Button
-        title={'Click'}
-        onPress={() => navigation.navigate('TweetDetails', {id: '1'})}
-      />
-    </View>
-  );
-};
-const TweetDetails = ({route}) => (
-  <View style={styles.container}>
-    <Text style={styles.txt}>TweetDetail {route.params.id}</Text>
-  </View>
-);
-
 const App1 = () => {
-  return <HomeScreen />;
+  return <AppNavigator />;
 };
 
 export default App1;
