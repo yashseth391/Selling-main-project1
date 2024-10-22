@@ -13,7 +13,7 @@ import AppNavigator from './App/navigation/AppNavigator';
 // };
 
 const App1 = () => {
-  return <AppNavigator />;
+  return <AuthNavigation />;
 };
 
 export default App1;

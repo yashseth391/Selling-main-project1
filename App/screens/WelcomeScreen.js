@@ -5,9 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const WelcomeScreen = () => {
-    const LoginPress = () => {
 
-    }
     const navigator = useNavigation();
     return (
         <ImageBackground
@@ -25,8 +23,8 @@ const WelcomeScreen = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button title={"Login"} color={"primary"} onPress={() => navigator.navigate("Login")} />
-                <Button title={"Register"} color={"secondary"} onPress={() => navigator.navigate("Register")} />
+                <Button title={"Login"} color={"primary"} onPress={() => navigator.navigate("login")} />
+                <Button title={"Register"} color={"secondary"} onPress={() => navigator.navigate("register")} />
             </View>
         </ImageBackground>
     );
