@@ -5,12 +5,13 @@ import ListingScreen from '../screens/ListingScreen';
 import ListingEditingScreen from '../screens/ListingEditingScreen';
 import AccountScreen from '../screens/AccountScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import FeedNavigator from './FeedNavigator';
 
 const Tab = createBottomTabNavigator();
 const AppNavigator = () => {
     const Navigator = () => (
         <Tab.Navigator>
-            <Tab.Screen name="Listing" component={ListingScreen} />
+            <Tab.Screen name="Feed" component={FeedNavigator} options={{ headerShown: false }} />
             <Tab.Screen name="ListingEdit" component={ListingEditingScreen} />
             <Tab.Screen name="Account" component={AccountScreen} />
         </Tab.Navigator>

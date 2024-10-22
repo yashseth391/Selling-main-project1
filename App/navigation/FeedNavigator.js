@@ -7,10 +7,12 @@ import ListingEditingScreen from '../screens/ListingEditingScreen';
 
 const Stack = createNativeStackNavigator();
 const FeedNavigator = () => {
-    <Stack.Navigator>
-        <Stack.Screen name="Listings" component={ListingScreen} />
-        <Stack.Screen name="ListingDetail" component={ListingEditingScreen} />
-    </Stack.Navigator>
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Listings" component={ListingScreen} />
+            <Stack.Screen name="ListingDetail" component={ListingEditingScreen} />
+        </Stack.Navigator>
+    );
 
 
 }
