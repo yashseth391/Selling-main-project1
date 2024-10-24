@@ -6,6 +6,7 @@ import Icon from '../components/IconAny'
 import IconAny from '../components/IconAny'
 import colors from '../config/colors'
 import ListItemSeparator from '../components/ListItemSeparator'
+import { useNavigation } from '@react-navigation/native'
 
 const menuItems = [
     {
@@ -20,10 +21,12 @@ const menuItems = [
         icon: {
             name: "email",
             backgroundColor: colors.secondary,
-        }
+        },
+        tragetScreen: "Messages"
     }
 ]
 const AccountScreen = () => {
+    const navigator = useNavigation();
     return (
         <View style={styles.screen}>
             <View style={styles.container1}>
@@ -48,7 +51,7 @@ const AccountScreen = () => {
                                 iconName={item.icon.name}
                                 bgColor={item.icon.backgroundColor}
                             />}
-
+                            onPressAction={() => navigator.navigate(item.tragetScreen)}
                         />
 
                     }

@@ -3,6 +3,7 @@ import React from 'react'
 import ListItem from '../components/ListItem'
 import Card from '../components/Card'
 import colors from '../config/colors'
+import { useNavigation } from '@react-navigation/native'
 const listings = [
     {
         id: 1,
@@ -18,7 +19,9 @@ const listings = [
     }
 
 ]
+
 const ListingScreen = () => {
+    const navigator = useNavigation();
     return (
         <View style={styles.screen}>
             <FlatList
@@ -29,6 +32,7 @@ const ListingScreen = () => {
                         title={item.title}
                         price={item.price}
                         image={item.image}
+                        onPress={() => navigator.navigate('ListingDetail', item)}
                     />
                 }
             />
