@@ -3,7 +3,7 @@ import React from 'react'
 import ListItem from '../components/ListItem'
 import Card from '../components/Card'
 import colors from '../config/colors'
-import route from '../navigation/route'
+
 import { useNavigation } from '@react-navigation/native'
 const listings = [
     {
@@ -33,7 +33,7 @@ const ListingScreen = () => {
                         title={item.title}
                         price={item.price}
                         image={item.image}
-                        onPress={() => navigator.navigate(route.LISTING_DETAILS, item)}
+                        onPress={() => navigator.navigate('ListingDetail', item)}
                     />
                 }
             />
