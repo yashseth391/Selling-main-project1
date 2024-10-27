@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import WelcomeScreen from './App/screens/WelcomeScreen';
 import AuthNavigation from './App/navigation/AuthNavigation';
 import AppNavigator from './App/navigation/AppNavigator';
+// import "react-native-devsettings";
 
 // type define nhi kiya
 // export type RootStackParamList = {

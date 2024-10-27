@@ -3,13 +3,15 @@ import React from 'react'
 import AppText from './AppText'
 import colors from '../config/colors'
 
-const Card = ({ title, price, image, onPress }) => {
+const Card = ({ title, price, imageUrl, onPress }) => {
+    console.log(imageUrl);
+    // const imagePath = require(`../assets/${imageUrl}`);
     return (
         <TouchableOpacity onPress={onPress}>
             <View style={styles.card}>
                 <Image
                     style={styles.image}
-                    source={image}
+                    source={{ uri: imageUrl }}
                 />
                 <Text style={styles.text1}> {title} </Text>
                 <Text style={styles.text2}> ₹ {price}  </Text>
